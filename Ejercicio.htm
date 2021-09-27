@@ -7,8 +7,13 @@
 			ctx.lineTo(arr[i],arr[i+1]);
 		ctx.clip();
 	}
+	function recorte(arr) {
+		for (var i = 2; i < arr.length; i+=2)
+			ctx.lineTo(arr[i],arr[i+1]);
+		ctx.clearRect();
+	}
 	function polygon(a, colorBorde, colorRelleno) { 
-  		ctx.lineWidth = 5;	
+  		ctx.lineWidth = 0;	
   		ctx.beginPath()
   		ctx.strokeStyle = colorBorde
   		ctx.fillStyle = colorRelleno
@@ -19,6 +24,15 @@
   		ctx.stroke()
  		ctx.fill()
 	}
+	function circulo(a, radio, anguloInicial,anguloFinal, colorBorde, colorRelleno, sentido) { 
+  		ctx.lineWidth = 0;	
+  		ctx.beginPath()
+  		ctx.strokeStyle = colorBorde
+  		ctx.fillStyle = colorRelleno
+  		ctx.arc(a, anguloInicial,anguloFinal,colorBorde, colorRelleno, sentido);
+		ctx.stroke()	
+ 		ctx.fill()
+	}
 
 	var c = document.getElementById('tablero')
 	var ctx = c.getContext('2d')
@@ -26,11 +40,13 @@
 	var [azul, rojo, verde] = ['rgb[0,162,232]', 'rgb[237,28,36]',
 	    'rgb[181,230,29]'];
 
-	var figAzul = [149,142,344,5,533,144,465,368,223,368], figRoja = [3,323,78,390,321,51],
+	var figAzul = [149,142,344,5,533,142,465,368,223,368],
 	    figVerde = [300,416,395,380,197,10];
+	var figRoja = [168,154];
+
+	var figBlancaA = [181,157,303,68,424,157,378,302, 227,302], figBlancaR =
  
 
-	polygon([149,142,344,5,533,144,465,368,223,368], 'yellow', 'black')
-
-	
+	polygon(figAzul, 'white', 'azul')
+	polygon(figVerde, 'white', 'verde')
 </script>
