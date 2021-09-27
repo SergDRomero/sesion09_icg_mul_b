@@ -1,0 +1,36 @@
+<canvas id='tablero' width=500 height=450></canvas>
+<script>
+	function recorte(arr) {
+		ctx.beginPath()
+		ctx.moveTo(arr[0],arr[1]);
+		for (var i = 2; i < arr.length; i+=2)
+			ctx.lineTo(arr[i],arr[i+1]);
+		ctx.clip();
+	}
+	function polygon(a, colorBorde, colorRelleno) { 
+  		ctx.lineWidth = 5;	
+  		ctx.beginPath()
+  		ctx.strokeStyle = colorBorde
+  		ctx.fillStyle = colorRelleno
+  		ctx.moveTo(a[0],a[1])
+  		for (i=2; i < a.length; i+=2)
+   		 ctx.lineTo(a[i],a[i+1]);
+  		ctx.closePath()
+  		ctx.stroke()
+ 		ctx.fill()
+	}
+
+	var c = document.getElementById('tablero')
+	var ctx = c.getContext('2d')
+
+	var [azul, rojo, verde] = ['rgb[0,162,232]', 'rgb[237,28,36]',
+	    'rgb[181,230,29]'];
+
+	var figAzul = [149,142,344,5,533,144,465,368,223,368], figRoja = [3,323,78,390,321,51],
+	    figVerde = [300,416,395,380,197,10];
+ 
+
+	polygon([149,142,344,5,533,144,465,368,223,368], 'yellow', 'black')
+
+	
+</script>
