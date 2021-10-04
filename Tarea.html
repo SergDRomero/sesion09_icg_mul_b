@@ -1,0 +1,56 @@
+<canvas id='tablero' width=500 height=450></canvas>
+<script>
+
+	function recorte(arr) {
+		ctx.beginPath()
+		ctx.moveTo(arr[0],arr[1]);
+		for (var i = 2; i < arr.length; i+=2)
+			ctx.lineTo(arr[i],arr[i+1]);
+		ctx.clip();
+	}
+        function polygon(a, colorBorde, colorRelleno) { 
+  		ctx.lineWidth = 0;	
+  		ctx.beginPath()
+  		ctx.strokeStyle = colorBorde
+  		ctx.fillStyle = colorRelleno
+  		ctx.moveTo(a[0],a[1])
+  		for (i=2; i < a.length; i+=2)
+   		 ctx.lineTo(a[i],a[i+1]);
+  		ctx.closePath()
+  		ctx.stroke()
+ 		ctx.fill()
+	}
+        function circulo(x,y,radio, colorBorde, colorRelleno, grosor) { 
+		ctx.beginPath()
+		ctx.strokeStyle = colorBorde
+		ctx.fillStyle = colorRelleno
+		ctx.lineWidth = grosor;
+		ctx.arc(x,y,radio,0, Math.PI * 2, true);
+		ctx.stroke();
+		ctx.fill();
+	}
+
+	var c = document.getElementById('tablero')
+	var ctx = c.getContext('2d')
+
+	var gris = 'rgba(195,195,195)';
+
+	var trGris = [118,16,392,165,132,298];
+
+	var [azul, morado, naranja, aguamarina] = ['rgba(144,17,69)', 'rgba(34,133,200)',
+	    'rgba(254,162,0)', 'rgba(25,242,176)'];
+
+	var rtNaranja = [160,29, 280,29, 370,150, 16,150], 
+            rtVerde = [311,40, 328,158, 444,161, 354,232, 377,351, 292,286, 197,352, 229,234, 136,158, 235,155],
+	    rtAzul = [37,130,361,276, 18,276], 
+	    rtAmarillo = [42,14, 85,14, 85,305, 42,305];
+
+
+	circulo(67,120, 85, morado, morado);
+	polygon(rtNaranja, naranja, naranja);
+	polygon(rtVerde, azul, aguamarina);
+	recorte([37,160,361,276, 18,276]);
+	polygon(rtAzul, naranja, azul);
+        circulo(67,120, 85, 'gray', azul);
+	
+</script>
